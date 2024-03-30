@@ -13,6 +13,7 @@ for i in range(len(data)):
     data[i][-1] = data[i][-1].strip()
     data[i].append(str(errors[data[i][0]]) + '\n')
 
+data.sort(key=lambda x: x[-1])
 
 f = open('db/game_counter.csv', 'w', encoding='utf-8')
 
