@@ -1,8 +1,8 @@
 def geterrcount(games):
     errs = {}
 
-    for game in data:
-        if game[0] not in errors:
+    for game in games:
+        if game[0] not in errs:
             errs[game[0]] = 1
         else:
             errs[game[0]] += 1
@@ -16,13 +16,19 @@ if __name__ == '__main__':
 
     errors = geterrcount(data)
 
-    for i in range(len(data)):
+    data[0].append('counter\n')
+    data[0][-2] = data[0][-2].strip()
+
+    for i in range(1, len(data)):
         data[i][-1] = data[i][-1].strip()
         data[i].append(str(errors[data[i][0]]) + '\n')
 
-    data.sort(key=lambda x: x[-1])
+    d1 = [data[0]] + sorted(data[1:], key=lambda x: x[-1])
 
     f = open('db/game_counter.csv', 'w', encoding='utf-8')
 
-    f.writelines(['$'.join(i) for i in data])
+    f.writelines(['$'.join(i) for i in d1])
     f.close()
+
+    for i in errors:
+        print(f'{i} - количество багов: {errors[i]}')
