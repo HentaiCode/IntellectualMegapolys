@@ -1,4 +1,9 @@
 def geterrcount(games):
+    '''
+
+    :param games: Весь массив игр
+    :return: Хеш-таблицу вида "игра: кол-во ошибок"
+    '''
     errs = {}
 
     for game in games:
@@ -16,6 +21,7 @@ if __name__ == '__main__':
 
     errors = geterrcount(data)
 
+    # Запись в файл
     data[0].append('counter\n')
     data[0][-2] = data[0][-2].strip()
 
@@ -30,5 +36,6 @@ if __name__ == '__main__':
     f.writelines(['$'.join(i) for i in d1])
     f.close()
 
+    # Вывод для второй задачи
     for i in errors:
         print(f'{i} - количество багов: {errors[i]}')
