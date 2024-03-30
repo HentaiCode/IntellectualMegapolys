@@ -8,9 +8,7 @@ while (n := input('Введите имя персонажа: ')) != "game":
     print(f'Персонаж {n} встречается в играх:')
     for i in data:
         if i[1] == n:
-            print('\t\t' + '+' + i[0])
+            print(i[0])
             count += 1
         if count == 5:
             break
-    print('________________________')
-    print()
